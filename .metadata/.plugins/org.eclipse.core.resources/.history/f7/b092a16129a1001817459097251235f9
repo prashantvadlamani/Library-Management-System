@@ -1,0 +1,12 @@
+package servlets;
+
+import java.sql.*;
+
+public class MyServletDao {
+	
+	Connection con = null;
+	
+	public MyServletDao() {
+		
+	}
+}

@@ -1,0 +1,27 @@
+package resource;
+
+import org.eclipse.persistence.oxm.MediaType;
+
+@Path("/userInfo")
+public class UserResource {
+	UserService userService=new UserService();
+	
+	//CRUD -- CREATE operation
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public User createUser(User user)
+	{
+		User userResponse=userService.createUser(user);
+		return userResponse;
+	}
+	
+	// CRUD -- READ operation
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<User> getAllUsers()
+	{
+		List<User> userList = userService.getAllUsers();
+		return userList;
+	}
+}

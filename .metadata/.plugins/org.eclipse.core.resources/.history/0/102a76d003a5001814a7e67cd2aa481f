@@ -1,0 +1,28 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import connection.MyConnection;
+
+public class LoginDao {
+Connection con=null;
+	
+	public LoginDao()
+	{
+		MyConnection mycon = new MyConnection();
+		con=mycon.getConnection();
+	}
+	
+	public boolean verify(String uname,String pass)
+	{
+		
+		try {
+			String sql = "select password from users where username="+uname;
+			con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

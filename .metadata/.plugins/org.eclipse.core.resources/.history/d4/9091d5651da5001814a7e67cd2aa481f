@@ -1,0 +1,41 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import model.Book;
+import connection.MyConnection;
+
+public class UserDao {
+	Connection con=null;
+	public UserDao()
+	{
+		MyConnection mycon = new MyConnection();
+		con=mycon.getConnection();
+	}
+	
+	public ArrayList<Book> search(String type,String key)
+	{
+		ArrayList<Book> list=new ArrayList<>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * from book");
+			while(rs.next()) {
+				int id1=rs.getInt(1);
+				String title=rs.getString(2);
+				String author=rs.getString(3);
+				String publisher=rs.getString(4);
+				int count=rs.getInt(5);
+				Book b=new Book(id1, title, author,publisher,count);
+				list.add(b);
+				//System.out.println(rs.getString(2));
+			}
+		} catch(SQLException se) {
+			System.out.println("failed to connect to db");
+		}
+		return list;
+	}
+}

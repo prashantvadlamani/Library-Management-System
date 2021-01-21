@@ -1,0 +1,8 @@
+package model;
+
+public class Book {
+	private int bid;
+	private String title;
+	private String publisher;
+	private int copies;
+}

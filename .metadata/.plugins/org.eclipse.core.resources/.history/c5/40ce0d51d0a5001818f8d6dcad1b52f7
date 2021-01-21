@@ -1,0 +1,26 @@
+package model;
+
+import java.time.LocalDate;
+
+public class BookHistory {
+	Book b= new Book();
+	LocalDate i,r;
+	
+	public BookHistory(){
+		
+	}
+	
+	public BookHistory(Book b,LocalDate i,LocalDate r)
+	{
+		this.b=b;
+		this.i=i;
+		this.r=r;
+	}
+
+	@Override
+	public String toString() {
+		return "BookHistory [book=" + b.toString() + ", issuedate=" + i + ", returndate=" + r + "]";
+	}
+	
+	
+}

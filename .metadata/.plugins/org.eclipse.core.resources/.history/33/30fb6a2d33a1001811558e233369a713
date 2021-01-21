@@ -1,0 +1,45 @@
+<%@page import="java.util.*"%>
+<%@page import="models.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>JSP Viewer</title>
+</head>
+<body>
+	<h1>Details of books</h1>
+	<br>
+	<table>
+		<tr>
+			<th>Book ID</th>
+			<th>Title</th>
+			<th>Publisher</th>
+			<th>Copies</th>
+		</tr>
+	
+	<%
+		//String name=(String)request.getParameter("pass");
+		//out.print(name);
+		String s=(String)session.getAttribute("loggedIn");
+		
+		if(s!=null && s.equals("yes"))
+		{
+			ArrayList<Books> b=(ArrayList<Books>)(session.getAttribute("booklist"));
+			if(b != null) {
+				Iterator <Books> it=b.iterator();
+				while(it.hasNext())
+				{
+					Books bo=it.next();
+					out.print(bo);
+					out.print("<br>");
+				}
+			}
+		}
+		else
+			response.sendRedirect("login.jsp");
+	%>
+	</table>
+</body>
+</html>

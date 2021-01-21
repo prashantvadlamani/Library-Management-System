@@ -1,0 +1,15 @@
+package dao;
+
+import java.sql.Connection;
+
+import connection.MyConnection;
+
+public class LoginDao {
+Connection con=null;
+	
+	public LoginDao()
+	{
+		MyConnection mycon = new MyConnection();
+		con=mycon.getConnection();
+	}
+}

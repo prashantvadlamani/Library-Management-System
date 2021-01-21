@@ -1,0 +1,68 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import model.Book;
+import connection.MyConnection;
+
+public class LibrarianDao {
+	Connection con=null;
+	public LibrarianDao()
+	{
+		MyConnection mycon = new MyConnection();
+		con=mycon.getConnection();
+	}
+	
+	public ArrayList<Book> getAll()
+	{
+		ArrayList<Book> list=new ArrayList<>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * from book");
+			while(rs.next()) {
+				int id1=rs.getInt(1);
+				String title=rs.getString(2);
+				String author=rs.getString(3);
+				String publisher=rs.getString(4);
+				int count=rs.getInt(5);
+				Book b=new Book(id1, title, author,publisher,count);
+				list.add(b);
+				//System.out.println(rs.getString(2));
+			}
+		} catch(SQLException se) {
+			System.out.println("failed to connect to db");
+		}
+		return list;
+	}
+	
+	public void add(String title,String author,String publisher,int copies)
+	{
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prodb", "root", "p@ssword");
+			int b=Integer.parseInt(bid);
+			int c=Integer.parseInt(copies);
+			System.out.println("db connected");
+			Statement st = con.createStatement();
+			//System.out.println(bid+","+title+","+publisher+","+copies);
+			String sql="insert into book values(?,?,?,?)";
+			
+			PreparedStatement pst=con.prepareStatement(sql);
+			pst.setInt(1,b);
+			pst.setString(2,title);
+			pst.setString(3,publisher);
+			pst.setInt(4,c);
+			System.out.println(pst);
+			int rs=pst.executeUpdate();
+			System.out.println("row is added");
+			
+		} catch(SQLException se) {
+			System.out.println("failed to connect to db");
+		}
+	}
+}

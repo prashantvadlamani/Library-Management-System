@@ -1,0 +1,19 @@
+package dao;
+
+import java.sql.Connection;
+
+import connection.MyConnection;
+
+public class UserDao {
+	Connection con=null;
+	public UserDao()
+	{
+		MyConnection mycon = new MyConnection();
+		con=mycon.getConnection();
+	}
+	
+	public void search(String type,String key)
+	{
+		
+	}
+}

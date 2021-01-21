@@ -1,0 +1,23 @@
+package model;
+
+public class Books {
+	  int bid;
+	  String title;
+	 String publisher;
+	int copies;
+	public Books(int a,String b,String c,int d)
+	{
+		bid=a;
+		title=b;
+		publisher=c;
+		copies=d;
+	}
+	@Override
+	public String toString() {
+		return "Books [bid=" + bid + ", title=" + title + ", publisher="
+				+ publisher + ", copies=" + copies + "]";
+	}
+	
+	
+	
+}
