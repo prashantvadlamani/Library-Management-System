@@ -14,7 +14,7 @@ import models.Login;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns={"/login"} )
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String uname="abcd";
@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name=request.getParameter("username");
 		String pass=request.getParameter("password");
+		System.out.println("uname:"+ name + "pass: "+pass);
 		//System.out.print(name+" "+pass);
 		Login l=new Login();
 		if(l.validate(name, pass))

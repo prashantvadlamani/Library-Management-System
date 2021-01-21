@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form method="POST" action="login">
+	<form method="POST" action="./login">
 	<h3>Username</h3>
 	<input type="text" name="username" placeholder="enter username">
 	<br>
